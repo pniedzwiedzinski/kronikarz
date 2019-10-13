@@ -10,7 +10,7 @@ Kronikarz has it's own rule for managing posts and at this point it is hard-code
 your_folder
 └── {year}
     └── {month}
-        └── {title}
+        └── {day}
             └── {title}.md
 ```
 
