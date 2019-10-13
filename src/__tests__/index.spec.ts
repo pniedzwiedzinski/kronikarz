@@ -1,6 +1,7 @@
 import Kronikarz from "..";
 
 test("basic", () => {
-  const k = new Kronikarz("./src/__tests__/samples");
+  const k = new Kronikarz(__dirname + "/samples");
   console.log(k.getPosts());
+  expect(k.getPosts().length).toBe(1);
 });

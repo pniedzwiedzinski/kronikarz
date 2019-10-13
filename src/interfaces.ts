@@ -4,13 +4,17 @@ interface Date {
   day: string;
 }
 
-interface Post {
-  date: Date;
-  title: string;
-  data: Object;
-  file: string;
-  fsRoute: string;
-  route: string;
+export interface PostContent {
+  html: string;
+  markdown: string;
+  description: string;
+  meta: Object;
 }
 
-export { Post };
+export interface Post {
+  date: Date;
+  title: string;
+  content: PostContent;
+  filePath: string;
+  route: string;
+}
