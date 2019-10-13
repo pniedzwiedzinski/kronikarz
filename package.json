@@ -1,0 +1,26 @@
+{
+  "name": "kronikarz",
+  "version": "0.1.0",
+  "description": "System elektronicznej kroniki",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "kronika"
+  ],
+  "author": "Patryk Niedźwiedziński",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jsdom": "^12.2.4",
+    "front-matter": "^3.0.2",
+    "jsdom": "^15.1.1",
+    "markdown-it": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.12",
+    "typescript": "^3.6.4"
+  }
+}
