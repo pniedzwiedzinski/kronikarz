@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import { Post } from "./interfaces";
 import parsePost from "./parsePost";
 import { readDir } from "./utils";
