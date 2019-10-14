@@ -30,14 +30,15 @@ function getPostContent(fileContent: string): PostContent {
 }
 
 export function parsePost(filePath: string): Post {
-  const [year, month, day, title] = filePath.split("/").splice(-4, 4);
+  let [year, month, day, title] = filePath.split("/").splice(-4, 4);
+  title = title.substr(0, title.lastIndexOf("."));
   const date = { year, month, day };
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const content = getPostContent(fileContent);
 
   return {
     date,
-    title: title.substr(0, title.lastIndexOf(".")),
+    title,
     content,
     filePath,
     route: `/kronika/${year}/${month}/${day}/${title}`
