@@ -4,11 +4,15 @@ interface Date {
   day: string;
 }
 
+interface Meta {
+  [key: string]: string;
+}
+
 export interface PostContent {
   html: string;
   markdown: string;
   description: string;
-  meta: Object;
+  meta: Meta;
 }
 
 export interface Post {

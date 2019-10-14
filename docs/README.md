@@ -28,8 +28,9 @@ import Kronikarz from "kronikarz";
 const k = new Kronikarz("path/to/posts");
 ```
 
-At this point only one method is available.
+At this point only two methods are available.
 
 ```js
-k.getPosts();
+k.getPosts(); // returns array of all posts
+k.getPost("2019", "11", "20", "title"); // returns post from path `2019/11/20/title.md`
 ```

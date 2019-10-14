@@ -1,6 +1,6 @@
 {
   "name": "kronikarz",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "System elektronicznej kroniki",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

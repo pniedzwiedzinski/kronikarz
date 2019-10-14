@@ -1,5 +1,5 @@
 import { Post } from "./interfaces";
-import parsePost from "./parsePost";
+import { parsePost } from "./parsePost";
 import { readDir } from "./utils";
 
 function getPosts(path: string): Array<Post> {

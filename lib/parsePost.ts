@@ -29,7 +29,7 @@ function getPostContent(fileContent: string): PostContent {
   };
 }
 
-export default function parsePost(filePath: string): Post {
+export function parsePost(filePath: string): Post {
   const [year, month, day, title] = filePath.split("/").splice(-4, 4);
   const date = { year, month, day };
   const fileContent = fs.readFileSync(filePath, "utf-8");
