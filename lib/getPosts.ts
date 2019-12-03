@@ -4,13 +4,13 @@ import { readDir } from "./utils";
 
 function getPosts(path: string): Array<Post> {
   let routesArray: Post[] = [];
-  const years = readDir(`${path}`);
+  const years = readDir(`${path}`).reverse();
   years.forEach((year: string) => {
-    const months = readDir(`${path}/${year}`);
+    const months = readDir(`${path}/${year}`).reverse();
     months.forEach((month: string) => {
-      const days = readDir(`${path}/${year}/${month}`);
+      const days = readDir(`${path}/${year}/${month}`).reverse();
       days.forEach((day: string) => {
-        const files = readDir(`${path}/${year}/${month}/${day}`);
+        const files = readDir(`${path}/${year}/${month}/${day}`).reverse();
         files.forEach((file: string) => {
           const fsRoute = `${path}/${year}/${month}/${day}/${file}`;
           try {
