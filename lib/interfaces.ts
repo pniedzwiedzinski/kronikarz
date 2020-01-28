@@ -4,19 +4,19 @@ export interface Date {
   day: string;
 }
 
-/*export interface Meta {
-  [key: string]: object;
-}*/
+export interface Object {
+  [key: string]: any;
+}
 
 export interface Meta {
   title: string;
   author: string;
-    additionalMeta: object;
+  additionalMeta: object;
 }
 
 export interface FrontMatterObject {
   body: string;
-  attributes: Meta;
+  attributes: Object;
 }
 
 export interface PostApiListEntry {

@@ -38,13 +38,16 @@ export default class Post {
   getMeta(): Meta {
     const { attributes } = this.post;
     const author: string = attributes.author;
-    delete attributes.author;
+    if (!author) throw 'Error while parsing the author';
     const title: string = attributes.title;
-    delete attributes.title;
+    if (!title) throw 'Error while parsing the title';
+    const additionalMeta = Object.keys(attributes)
+      .filter((key) => key != 'title' && key != 'author')
+      .reduce((acc, key) => ({ ...acc, [key]: attributes[key] }), {});
     return {
       author,
       title,
-      additionalMeta: attributes,
+      additionalMeta,
     };
   }
 

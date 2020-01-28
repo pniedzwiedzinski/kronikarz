@@ -8,6 +8,6 @@ test("generate single file", () => {
   k.generateApi(dir);
   fs.readFile("./tmp/api/posts/2019/12/12/test.json", "utf-8", (err, data) => {
     const parsedPost = JSON.parse(data);
-    expect(parsedPost.title).toBe("test");
+    expect(parsedPost.title).toBe("Test");
   });
 });
