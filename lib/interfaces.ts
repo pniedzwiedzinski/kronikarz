@@ -1,24 +1,33 @@
-interface Date {
+export interface Date {
   year: string;
   month: string;
   day: string;
 }
 
-interface Meta {
-  [key: string]: string;
+export interface Object {
+  [key: string]: any;
 }
 
-export interface PostContent {
-  html: string;
-  markdown: string;
-  description: string;
-  meta: Meta;
-}
-
-export interface Post {
-  date: Date;
+export interface Meta {
   title: string;
-  content: PostContent;
-  filePath: string;
-  route: string;
+  author: string;
+  additionalMeta: Object;
+}
+
+export interface FrontMatterObject {
+  body: string;
+  attributes: Object;
+}
+
+export interface PostApiListEntry {
+  date: string;
+  author: string;
+  title: string;
+  path: string;
+  description: string;
+  meta: Object;
+}
+
+export interface PostApiEntry extends PostApiListEntry {
+  content: string;
 }

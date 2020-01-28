@@ -1,6 +1,7 @@
 import { getPost as apiGetPost } from "./getPost";
 import { getPosts as apiGetPosts } from "./getPosts";
-import { Post } from "./interfaces";
+import { generateApi as apiGenerateApi } from "./generateApi"
+import Post from "./Post";
 
 export default class Kronikarz {
   postPath: string;
@@ -14,5 +15,9 @@ export default class Kronikarz {
   }
   getPost(year: string, month: string, day: string, title: string): Post {
     return apiGetPost({ year, month, day, title }, this.postPath);
+  }
+    generateApi(path: string) {
+      const posts = this.getPosts();
+      apiGenerateApi(posts, path)
   }
 }
