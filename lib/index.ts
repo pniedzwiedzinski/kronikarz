@@ -1,7 +1,7 @@
 import { getPost as apiGetPost } from "./getPost";
 import { getPosts as apiGetPosts } from "./getPosts";
 import { generateApi as apiGenerateApi } from "./generateApi"
-import { Post } from "./interfaces";
+import Post from "./Post";
 
 export default class Kronikarz {
   postPath: string;

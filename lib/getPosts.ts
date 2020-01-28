@@ -1,5 +1,4 @@
-import { Post } from "./interfaces";
-import { parsePost } from "./parsePost";
+import Post from "./Post";
 import { readDir } from "./utils";
 
 function getPosts(path: string): Array<Post> {
@@ -14,7 +13,7 @@ function getPosts(path: string): Array<Post> {
         files.forEach((file: string) => {
           const fsRoute = `${path}/${year}/${month}/${day}/${file}`;
           try {
-            const post = parsePost(fsRoute);
+            const post = new Post(fsRoute);
             routesArray.push(post);
           } catch (err) {
             console.log(err);

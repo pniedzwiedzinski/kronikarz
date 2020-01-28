@@ -1,5 +1,4 @@
-import { parsePost } from "./parsePost";
-import { Post } from "./interfaces";
+import Post from "./Post";
 
 interface getPostArgument {
   year: string;
@@ -14,6 +13,6 @@ export function getPost(
 ): Post {
   const filePath = `${path}/${year}/${month}/${day}/${title}.md`;
 
-  const post = parsePost(filePath);
-  return post;
+  const post = new Post(filePath);
+    return post;
 }
