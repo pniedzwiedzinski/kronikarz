@@ -11,7 +11,7 @@ export interface Object {
 export interface Meta {
   title: string;
   author: string;
-  additionalMeta: object;
+  additionalMeta: Object;
 }
 
 export interface FrontMatterObject {
@@ -25,7 +25,7 @@ export interface PostApiListEntry {
   title: string;
   path: string;
   description: string;
-  meta: object;
+  meta: Object;
 }
 
 export interface PostApiEntry extends PostApiListEntry {

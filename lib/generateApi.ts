@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import Post from './Post';
 import { dateToPath } from './utils';
+import { Object as PlainObject } from './interfaces';
 
 function mkDirByPathSync(targetDir: string) {
   const sep = path.sep;
@@ -49,7 +50,7 @@ export function saveApiEntry(post: Post, path: string) {
 }
 
 /*
- * This function generates paged api index on path `/api/paged-posts`
+ * This function generates paged api index on path `/api/posts`
  */
 function generateApiIndex(posts: Array<Post>, path: string) {
   const parsedPosts = posts.map((post) => {
@@ -63,9 +64,34 @@ function generateApiIndex(posts: Array<Post>, path: string) {
   );
 }
 
+function generateCategories(posts: Array<Post>, path: string) {
+  const categories: PlainObject = {};
+  posts.forEach((post) => {
+    const apiEntry = post.toApi();
+    delete apiEntry.content;
+    if (apiEntry.meta['category']) {
+      apiEntry.meta['category'].forEach((category: string) =>
+        categories[category]
+          ? categories[category].push(apiEntry)
+          : (categories[category] = [apiEntry])
+      );
+    }
+  });
+
+  const dir = `${path}/api/category`;
+  mkDirByPathSync(dir);
+  Object.keys(categories).forEach((category) => {
+    const filePath = `${dir}/${category}.json`;
+    fs.writeFile(filePath, JSON.stringify(categories[category]), (err) =>
+      err ? console.log(err) : null
+    );
+  });
+}
+
 export function generateApi(posts: Array<Post>, path: string) {
   try {
     generateApiIndex(posts, path);
+    generateCategories(posts, path);
     posts.forEach((post) => saveApiEntry(post, path));
   } catch (err) {
     console.log(err);
