@@ -14,5 +14,5 @@ export function getPost(
   const filePath = `${path}/${year}/${month}/${day}/${title}.md`;
 
   const post = new Post(filePath);
-    return post;
+  return post;
 }

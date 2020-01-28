@@ -28,9 +28,39 @@ import Kronikarz from "kronikarz";
 const k = new Kronikarz("path/to/posts");
 ```
 
-At this point only two methods are available.
+### Generating the api
+
+For generating the json api run:
+
+```js
+k.generateApi(`./path`)
+```
+
+This will create all posts list in `./path/api/posts.json` and create json file
+with content for every markdown file in
+`./path/api/posts/{year}/{month}/{day}/{title}.json`.
+
+Also you can specify categories (tags) like this in your post:
+
+```md
+---
+title: Test
+author: Tester
+category:
+    - testing
+---
+```
+
+And it will generate list of all posts in this category in
+`./path/api/category/testing.json`
+
+### Old functions
+
+Now these function will return wrapper of `Post` object. If you want to get a
+simple object like from json api run `post.toApi()`
 
 ```js
 k.getPosts(); // returns array of all posts
-k.getPost("2019", "11", "20", "title"); // returns post from path `2019/11/20/title.md`
+let post = k.getPost("2019", "11", "20", "title"); // returns post from path `2019/11/20/title.md`
+post.toApi();
 ```
