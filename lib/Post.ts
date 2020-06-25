@@ -3,7 +3,7 @@ import { JSDOM } from 'jsdom';
 
 const frontmatter = require('front-matter');
 const md = require('markdown-it')();
-const { html5Media } = require('markdown-it-html5-media');
+const { html5Media } = require('@gerhobbelt/markdown-it-html5-media');
 md.use(html5Media);
 
 import { dateToPath, dateToString } from './utils';
