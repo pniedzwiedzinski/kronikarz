@@ -9,7 +9,8 @@ function getPosts(path: string): Array<Post> {
     months.forEach((month: string) => {
       const days = readDir(`${path}/${year}/${month}`).reverse();
       days.forEach((day: string) => {
-        const files = readDir(`${path}/${year}/${month}/${day}`).reverse();
+        let files = readDir(`${path}/${year}/${month}/${day}`).reverse();
+        files = files.filter((file: string) => file.substr(file.length - 3) === ".md");
         files.forEach((file: string) => {
           const fsRoute = `${path}/${year}/${month}/${day}/${file}`;
           try {
