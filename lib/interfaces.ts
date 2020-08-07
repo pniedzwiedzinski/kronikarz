@@ -31,3 +31,9 @@ export interface PostApiListEntry {
 export interface PostApiEntry extends PostApiListEntry {
   content: string;
 }
+
+export interface FeedOptions {
+  title: string;
+  feed_url: string;
+  site_url: string;
+}

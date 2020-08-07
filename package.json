@@ -1,6 +1,6 @@
 {
   "name": "kronikarz",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "System elektronicznej kroniki",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,11 +17,13 @@
   "author": "Patryk Niedźwiedziński",
   "license": "ISC",
   "dependencies": {
+    "@gerhobbelt/markdown-it-html5-media": "0.6.0-1",
     "@types/jsdom": "^12.2.4",
+    "@types/rss": "0.0.28",
     "front-matter": "^3.0.2",
     "jsdom": "^15.1.1",
     "markdown-it": "^10.0.0",
-    "@gerhobbelt/markdown-it-html5-media": "0.6.0-1"
+    "rss": "^1.2.2"
   },
   "devDependencies": {
     "@types/jest": "^24.0.18",
