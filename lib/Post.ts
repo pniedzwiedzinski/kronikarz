@@ -2,7 +2,11 @@ import * as fs from 'fs';
 import { JSDOM } from 'jsdom';
 
 const frontmatter = require('front-matter');
-const md = require('markdown-it')();
+const md = require('markdown-it')({
+  html: true,
+  breaks: true,
+  linkify: true
+});
 const { html5Media } = require('@gerhobbelt/markdown-it-html5-media');
 md.use(html5Media);
 
