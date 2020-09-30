@@ -1,6 +1,6 @@
 {
   "name": "kronikarz",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "System elektronicznej kroniki",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,15 +22,15 @@
     "@types/rss": "0.0.28",
     "front-matter": "^3.0.2",
     "jsdom": "^15.1.1",
+    "lodash.chunk": "^4.2.0",
     "markdown-it": "^10.0.0",
     "rss": "^1.2.2"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.18",
     "@types/node": "^12.7.12",
     "eslint": "^6.8.0",
-    "jest": "^24.9.0",
-    "ts-jest": "^24.1.0",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.3.0",
     "typescript": "^3.6.4",
     "vuepress": "^1.2.0"
   },
