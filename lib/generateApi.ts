@@ -49,20 +49,51 @@ export function saveApiEntry(post: Post, path: string) {
   );
 }
 
+//#Source https://bit.ly/2neWfJ2
+function chunk (arr: Array<Post>, size: number): Array<Array<Post>> {
+  return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+             arr.slice(i * size, i * size + size)
+            );
+}
+
+function parsePosts(post: Post) {
+  const apiEntry = post.toApi();
+  delete apiEntry.content;
+  return apiEntry;
+}
+
 /*
- * This function generates paged api index on path `/api/posts`
+ * This function generates api index on path `/api/posts`
  */
 function generateApiIndex(posts: Array<Post>, path: string) {
-  const parsedPosts = posts.map((post) => {
-    const apiEntry = post.toApi();
-    delete apiEntry.content;
-    return apiEntry;
-  });
+  const parsedPosts = posts.map(parsePosts);
   const filePath = `${path}/api/posts.json`;
   fs.writeFile(filePath, JSON.stringify(parsedPosts), (err) =>
     err ? console.log(err) : null
   );
 }
+
+/*
+ * This function generates pages on path `/api/page/<number>`
+ */
+function generatePages(posts: Array<Post>, path: string, len: number = 8) {
+  const parsedPosts = posts.map(parsePosts);
+  const pages = chunk(posts, len);
+  mkDirByPathSync(`${path}/api/page`);
+  pages.forEach((posts: Array<Post>, index: number) => {
+    const pageNumber = index + 1;
+    const page = { posts, next : pageNumber + 1 };
+    if (pageNumber == pages.length) {
+      delete page.next;
+    }
+    fs.writeFile(`${path}/api/page/${pageNumber}.json`, JSON.stringify(page), (err) =>
+                 err ? console.log(err) : null
+                );
+  })
+}
+
+
+
 
 function generateCategories(posts: Array<Post>, path: string) {
   const categories: PlainObject = {};
@@ -92,6 +123,7 @@ export function generateApi(posts: Array<Post>, path: string) {
   try {
     generateApiIndex(posts, path);
     generateCategories(posts, path);
+    generatePages(posts, path);
     posts.forEach((post) => saveApiEntry(post, path));
   } catch (err) {
     console.log(err);
