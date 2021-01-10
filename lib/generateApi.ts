@@ -77,12 +77,12 @@ function generateApiIndex(posts: Array<Post>, path: string) {
  * This function generates pages on path `/api/page/<number>`
  */
 function generatePages(posts: Array<Post>, path: string, len: number = 8) {
-  const parsedPosts = posts.map(parsePosts);
   const pages = chunk(posts, len);
   mkDirByPathSync(`${path}/api/page`);
   pages.forEach((posts: Array<Post>, index: number) => {
+    const parsedPosts = posts.map(parsePosts);
     const pageNumber = index + 1;
-    const page = { posts, next : pageNumber + 1 };
+    const page = { posts: parsedPosts, next : pageNumber + 1 };
     if (pageNumber == pages.length) {
       delete page.next;
     }
