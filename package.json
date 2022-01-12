@@ -23,7 +23,7 @@
     "front-matter": "^3.0.2",
     "jsdom": "^15.1.1",
     "lodash.chunk": "^4.2.0",
-    "markdown-it": "^10.0.0",
+    "markdown-it": "^12.3.2",
     "rss": "^1.2.2"
   },
   "devDependencies": {
