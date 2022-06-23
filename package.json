@@ -21,7 +21,7 @@
     "@types/jsdom": "^12.2.4",
     "@types/rss": "0.0.28",
     "front-matter": "^3.0.2",
-    "jsdom": "^15.1.1",
+    "jsdom": "^16.5.0",
     "lodash.chunk": "^4.2.0",
     "markdown-it": "^10.0.0",
     "rss": "^1.2.2"
